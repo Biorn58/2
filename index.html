@@ -23,7 +23,7 @@
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             
-            <a href="#" class="navbar-brand">Обработка заявок</a>
+            <a href="#" class="navbar-brand">История</a>
         </div>
         <!-- Collection of nav links and other content for toggling -->
     </nav>
@@ -115,14 +115,11 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Row</th>
-                        <th>Name</th>
-                        <th>Gender</th>
-                        <th>Email</th>
-                        <th>Place</th>
-                        <th>Detail</th>
-                        <th>Date</th>
-                        <th>Accept</th>
+                        <th>id</th>
+                        <th>ФИО</th>
+                        <th>Звание</th>
+                        <th>Направление</th>
+                        <th>Дата</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -138,13 +135,13 @@
     <!-- ./container -->
     <script>
         var config = {
-            apiKey: "AIzaSyAAcNTEUdqPOz0ubf--xJGBpjveXzqIunI",
-            authDomain: "lena-7cf3b.firebaseapp.com",
-            databaseURL: "https://lena-7cf3b.firebaseio.com",
-            projectId: "lena-7cf3b",
-            storageBucket: "lena-7cf3b.appspot.com",
-            messagingSenderId: "992604424311"
-        };
+                apiKey: "AIzaSyC4W72rp1efs_q_9PXpr8TNaaUgP7sIz1k",
+                authDomain: "base-292d4.firebaseapp.com",
+                databaseURL: "https://base-292d4.firebaseio.com",
+                projectId: "base-292d4",
+                storageBucket: "base-292d4.appspot.com",
+                messagingSenderId: "974747156796"
+              };
 
         firebase.initializeApp(config);
         var db = firebase.firestore();
@@ -191,19 +188,16 @@
         }
 
         function load_requests() {
-            db.collection("requests").get().then((querySnapshot) => {
+            db.collection("people").get().then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
                     console.log(doc);
                     var data = doc.data();
                     var tr = "<tr>\
                     <td>"+ doc.id + "</td>\
-                    <td>"+ data.firs_name + "</td>\
-                    <td>"+ doc.data().gender + "</td>\
-                    <td>"+ doc.data().email + "</td>\
-                    <td>"+ doc.data().place + "</td>\
-                    <td>"+ doc.data().detail + "</td>\
-                    <td>"+ doc.data().date + "</td>\
-                    <td>"+ doc.data().accept + "</td>\
+                    <td>"+ data.name + "</td>\
+                    <td>"+ data.type + "</td>\
+                    <td>"+ data.entrance + "</td>\
+                    <td>"+ data.date + "</td>\
                     </tr>";
 
                     $('#table tbody').append(tr);
